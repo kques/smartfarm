@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 

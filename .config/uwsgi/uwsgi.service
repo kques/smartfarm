@@ -3,7 +3,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ssp_master/myvenv/bin/uwsgi -i /srv/django-deploy-test/.config/uwsgi/mysite.ini
+ExecStart=/home/ssp_master/myvenv/bin/uwsgi -i /srv/smartfarm/.config/uwsgi/mysite.ini
 
 Restart=always
 KillSignal=SIGQUIT
