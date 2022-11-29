@@ -1,5 +1,6 @@
 from sre_constants import SUCCESS
 from django.http import HttpResponse
+from django.core import serializers
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Aduino
@@ -31,7 +32,7 @@ def aduino_modify(request,user_id):
             if serializer.is_valid():
                 serializer.save()
                 return HttpResponse(status=200)
-            
+
 @csrf_exempt
 def aduino_auto(request,user_id):
     if request.method == "GET":
@@ -43,7 +44,19 @@ def aduino_auto(request,user_id):
             "waterCycle":obj.waterCycle
         }
         return JsonResponse(data)
-    
+
+@csrf_exempt
+def ajax_method(request,user_id):
+        obj = Aduino.objects.get(useridx=user_id)
+        data = {
+            "nowtemp":obj.nowtemp,
+            "nowhum":obj.nowhum,
+            "nowillum":obj.nowillum,
+            "nowwaterCycle":obj.nowwaterCycle
+           }
+
+        return JsonResponse(data)
+
 def aduino_insert(request,user_id):
     obj = Aduino.objects.get(useridx=user_id)
     if request.method == "POST":

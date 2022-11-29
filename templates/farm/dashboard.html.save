@@ -1,53 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
- $.ajax({
-        url: "{% url 'farm:ajax_method' user.id %}",
-        dataType: "json",
-        success: function (data) {
-            var ajax="";
 
-            ajax += "<tr class='text-center'>"
-            ajax += "<td>" + data.nowtemp + "</td>"
-            ajax += "<td>" + data.nowhum + "</td>"
-            ajax += "<td>" + data.nowillum + "</td>"
-            ajax += "<td>" + data.nowwaterCycle + "</td>"
-            ajax += "</tr>"
-            $('[id="ajax"]').html(ajax);
-        },
-        error: function (request, status, error) {
-            console.log('실패');
-        }
-   })	
- setInterval(function (){
-  	$.ajax({
-        url: "{% url 'farm:ajax_method' user.id %}",
-        dataType: "json",
-        success: function (data) {
-            var ajax="";
-            
-            ajax += "<tr class='text-center'>"
-            ajax += "<td>" + data.nowtemp + "</td>"
-            ajax += "<td>" + data.nowhum + "</td>"
-            ajax += "<td>" + data.nowillum + "</td>"
-            ajax += "<td>" + data.nowwaterCycle + "</td>"
-            ajax += "</tr>"
-            console.log(data.nowtemp);
-            $('[id="ajax"]').html(ajax);
-        },
-        error: function (request, status, error) {
-            console.log('실패');
-        }
-   });
-  },3000);
-});
-</script>
-
-<div class="container my-3"  >
-    <table class="table" id="here">
+<div class="container my-3">
+ 
+    <table class="table">
         <thead>
             <tr class="text-center table-dark">
                 <th>현재 온도</th>
@@ -56,11 +13,24 @@ $(document).ready(function(){
                 <th>현재 물 주기</th>
             </tr>
         </thead>
-        <tbody id="ajax">
-         
+        <tbody>
+        <tr class="text-center">
+            <td>
+                {{ aduino.nowtemp }}
+            </td>
+            <td>
+                {{ aduino.nowhum }}
+            </td>
+            <td>
+                {{ aduino.nowillum }}
+            </td>
+            <td>
+                {{ aduino.nowwaterCycle }}
+            </td>
+        </tr>
         </tbody>
     </table>
-    
+
     <div class="card" style="width: 18rem;">
     <form method="post" action="{% url 'farm:aduino_insert' user.id %}">
         {% csrf_token %}

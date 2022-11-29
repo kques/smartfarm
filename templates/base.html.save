@@ -10,6 +10,7 @@
     <!-- pybo CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'pybo/style.css' %}">
     <title>INFOFARM!</title>
+    <script src = https://<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
 <!-- 네비게이션바 -->
