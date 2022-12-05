@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pybo.apps.PyboConfig',
     'common.apps.CommonConfig',  
     'farm.apps.FarmConfig',  
 ]
