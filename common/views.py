@@ -20,14 +20,14 @@ def signup(request):
                 aduino = form2.save(commit=False)
                 aduino.useridx = request.user.id
                 aduino.author = request.user
-                aduino.temp = NULL
-                aduino.hum = NULL
-                aduino.illum = NULL
-                aduino.waterCycle = NULL
-                aduino.nowtemp = NULL
-                aduino.nowhum = NULL
-                aduino.nowillum = NULL
-                aduino.nowwaterCycle = NULL
+                aduino.temp = 0
+                aduino.hum = 0
+                aduino.illum =0
+                aduino.waterCycle = 0
+                aduino.nowtemp = 0
+                aduino.nowhum = 0
+                aduino.nowillum = 0
+                aduino.nowwaterCycle = 0
                 aduino.save()
                 return redirect('farm:index', user_id=user.id)
         

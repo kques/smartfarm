@@ -46,23 +46,22 @@ $(document).ready(function(){
   },3000);
 });
 </script>
-
-<div class="container my-3"  >
+  <div class="container my-3"  >
     <table class="table" id="here">
         <thead>
             <tr class="text-center table-dark">
                 <th>현재 온도</th>
                 <th >현재 습도</th>
                 <th>현재 조도</th>
-                <th>현재 물 주기</th>
+                <th>토양 수분</th>
             </tr>
         </thead>
         <tbody id="ajax">
          
         </tbody>
     </table>
-    
-    <div class="card" style="width: 18rem;">
+ 
+    <div class="card" style="width: 30%; float:left; margin-right:50px;">
     <form method="post" action="{% url 'farm:aduino_insert' user.id %}">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
@@ -81,17 +80,17 @@ $(document).ready(function(){
             <input type="text" class="form-control" name="illum" id="illum" value="{{ aduino.illum }}"
                                  value="{{ form.illum.value|default_if_none:'' }}"></li>
 
-            <li class="list-group-item"><label for="waterCycle"class="col-sm-6 col-form-label">물 주기</label>
+            <li class="list-group-item"><label for="waterCycle"class="col-sm-6 col-form-label">토양 수분</label>
             <input type="text" class="form-control" name="waterCycle" id="waterCycle"  value="{{ aduino.waterCycle }}"
                                         value="{{ form.waterCycle.value|default_if_none:'' }}"></li>
     
         <button type="submit" class="btn btn-primary" style="background-color:black; border-color:black;">저장</button>
-    </form>
-    </div>    
-</div>
-
-<div class="container my-3">
-    <table class="table">
+      </ul>     
+  </form>
+  </div>
+<div class="card" style="width: 66%; float:left;">
+  <form>
+	<table class="table">
         <thead>
             <tr class="text-center table-dark">
                 <th>번호</th>
@@ -165,7 +164,13 @@ $(document).ready(function(){
     </ul>
     <!-- 페이징처리 끝 -->
     <a href="{% url 'farm:question_create' %}" class="btn btn-primary">질문 등록하기</a>
+</form>
 </div>
+</div>  
+</div>
+</div>
+
+
 
 
 {% else %}
